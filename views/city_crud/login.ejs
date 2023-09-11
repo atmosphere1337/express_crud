@@ -1,0 +1,14 @@
+LOGIN PAGE
+<div>
+    <div>
+        <form method="POST" action="/city/login/post">
+            <div><input name="login"/></div>
+            <div><input name="password"/></div>
+            <div><input type="submit"/></div>
+        </form>
+        <div style="color: red"><%= query.error %></div>
+        <div>
+            <a href="/city/register">Register</a>
+        </div>
+    </div>
+</div>
