@@ -23,5 +23,11 @@ module.exports = {
     logout : function (req, res, next) {
         req.session.destroy();
         next();
+    },
+    db_change_perm : function (req, res, next) {
+        if (req.body.owner == req.session.user_id)
+            next();
+        else 
+            res.send('permission on db change denied')
     }
 }

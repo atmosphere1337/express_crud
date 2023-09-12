@@ -1,10 +1,13 @@
-LOGIN PAGE
-<div>
+<link href="/css/city.css" rel="stylesheet">
+<div class="center-box">
     <div>
+        <div style="text-align: center;">
+            LOGIN PAGE
+        </div>
         <form method="POST" action="/city/login/post">
             <div><input name="login"/></div>
-            <div><input name="password"/></div>
-            <div><input type="submit"/></div>
+            <div><input type="password" name="password"/></div>
+            <div><input type="submit" value="Login"/></div>
         </form>
         <div style="color: red"><%= query.error %></div>
         <div>

@@ -1,5 +1,50 @@
 PAGE
+<style>
+    input[type=text].c1 {
+        background-color: aqua;
+    }
+    input[type=submit].c1 {
+        background-color: aqua;
+    }
+</style>
 <div>Hello, <%= user %></div>
+<div>
+    <table border="1">
+        <tr style="background-color: bisque; text-align: center;">
+            <td>City</td>
+            <td>Country</td>
+            <td>Population</td>
+        </tr>
+        <% for (let i = 0; i < cities.length; i++) { %>
+        <% dis = (acc == cities[i].owner)? '' : 'disabled'; %>
+            <tr>
+                <form method="POST" action="/city/page/update">
+                    <input type="hidden" name="city_id" value=<%= cities[i].id %>>
+                    <input type="hidden" name="owner" value=<%= cities[i].owner %>>
+                    <td><input <%= dis %> name="city" value=<%= cities[i].city %> ></td>
+                    <td><input <%= dis %> name="country" value=<%= cities[i].country %> ></td>
+                    <td><input <%= dis %> name="population" value=<%= cities[i].population %> ></td>
+                    <td><input <%= dis %> type="submit" value="Update"></td>
+                </form>
+                <form method="POST" action="/city/page/delete">
+                    <td>
+                        <input type="hidden" name="city_id" value=<%= cities[i].id %>>
+                        <input <%= dis %> type="hidden" name="owner" value=<%= cities[i].owner %>>
+                        <input <%= dis %> type="submit" value="Delete">
+                    </td>
+                </form>
+            </tr>    
+        <% } %>
+        <tr>
+            <form method="POST" action="/city/page/create">
+                <td><input class="c1" type="text" name="city_new"/></td>
+                <td><input class="c1" type="text" name="country_new"/></td>
+                <td><input class="c1" type="text" name="population_new"/></td>
+                <td><input class="c1" type="submit" value="Create"/></td>
+            </form>
+        </tr>
+    </table>
+</div>
 <div>
     <a href="/city/login">Logout</a>
 </div>

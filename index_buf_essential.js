@@ -41,7 +41,7 @@ function main_render(req, res)
     NewUser.save();
     //Account.find({}).then(x => ...)
     //Account.findOne({?:?}).then(x => ...)
-    //Account.findOneAndUpdate({?:?}).then(x => ...)
+    //Account.findOneAndUpdate({?:?}, {?:?}).then(x => ...)
     //Account.deleteOne({?:?}).then(x => ...)
     res.render('main_buf_essential', {value_r: val, cck: cock, ssn: sess})
 }

@@ -1,30 +1,21 @@
-let User = require('../../models/city_crud/account_model');
+let City = require('../../models/city_crud/city_model');
 module.exports = {
-    login : function (req, res) {
-        res.render('city_crud/login', {query: req.query});
-    }, 
-    register : function (req, res) {
-        res.render('city_crud/register');
+    create_post: function(req, res) {
+        City.create(req.body.city_new, req.body.country_new, req.body.population_new, req.session.user_id);
+        res.redirect('/city/page');
     },
-    page : function (req, res) {
-        User.find(req.session.user_id).then(x => {
-            res.render('city_crud/page', {user: x.login});
-        }).catch(x => {
-            res.send('couldnt access database');
+    delete_post : function(req, res) {
+        City.delete(req.body.city_id).then(
+            res.redirect('/city/page')
+        ).catch(x => {
+            res.send('city_controller delete error');
         });
     },
-    register_post : function (req, res) {
-        User.create(req.body.login, req.body.password);
-        res.redirect('/city/login');
-    },
-    login_post : function (req, res) {
-        User.auth(req.body.login, req.body.password).then(result => {
-            req.session.user_id = result.id;
-            res.cookie('login', result.login, {maxAge: 10000, httpOnly: true});
-            res.cookie('password', result.password, {maxAge: 10000, httpOnly: true});
+    update_post : function (req, res) {
+        City.update(req.body.city_id, req.body.city, req.body.country, req.body.population).then( x => {
             res.redirect('/city/page');
-        }).catch(result => {
-            res.redirect('/city/login?error=Wrong+login+or+password');
+        }).catch(x => {
+            res.send('city_controller update error');
         });
     }
 }
