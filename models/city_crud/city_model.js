@@ -11,6 +11,7 @@ module.exports = {
     update : function(id_in, city_in, country_in, population_in) {
         return City.findOneAndUpdate({_id : id_in}, 
             {city: city_in, country: country_in, population: population_in});
-    }
+    },
+	read : (id_in) => City.findById(id_in)
     
 }
