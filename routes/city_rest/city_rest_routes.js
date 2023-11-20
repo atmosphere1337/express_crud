@@ -6,4 +6,9 @@ module.exports = function(app) {
 	app.post('/city/api/v1/city', city_c.create);
 	app.put('/city/api/v1/city/:cityId', city_c.update);
 	app.delete('/city/api/v1/city/:cityId', city_c.drop);
+
+
+	app.post('/city/api/v1/user', user_c.signup);
+	app.put('/city/api/v1/user', user_c.auth_in);
+	app.delete('/city/api/v1/user', user_c.auth_out);
 }

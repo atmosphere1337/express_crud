@@ -19,12 +19,11 @@ module.exports = {
 	},
 	update : function (req, res)
 	{
-		City.update(req.params.cityId, req.body.city, req.body.country, req.body.population);
-		res.status(204).send("City updated");
+		City.update(req.params.cityId, req.body.city, req.body.country, req.body.population).then( ans => {
+		res.status(204).send("City updated"); } ). catch (ans => { res.status(404).send("city is not updated")});
 	},
 	drop : function (req, res)
 	{
-		console.log(req.params.cityId);
 		City.delete(req.params.cityId)
 			.then(x => res.status(204).send("City deleted"))
 			.catch(x => res.status(404).send("error"));

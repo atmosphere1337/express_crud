@@ -4,7 +4,8 @@ const express = require('express'),
       session = require('express-session'),
       mongoose = require('mongoose'),
       path = require('path'),
-	  cors = require('cors')
+	  cors = require('cors'),
+	  jwt = require('jsonwebtoken')
 const app = express();
 app.set('view engine', 'ejs')
 

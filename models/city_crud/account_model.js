@@ -12,5 +12,8 @@ module.exports = {
     },
     find : function (id_in) {
         return Account.findById(id_in);
-    }
+    },
+	checkIfExists : function (login_in) {
+		return Account.findOne({login: login_in});
+	},
 }
